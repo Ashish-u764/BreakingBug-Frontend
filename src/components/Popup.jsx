@@ -1,6 +1,9 @@
+
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { underControl } from '../redux/userHandle';
+//error
+//no use of underControl 
+//import { underControl } from '../redux/userHandle';
 import MuiAlert from '@mui/material/Alert';
 import { Snackbar } from '@mui/material';
 
@@ -15,7 +18,10 @@ const Popup = ({ message, setShowPopup, showPopup }) => {
             return;
         }
         setShowPopup(true);
-        dispatch(underControl())
+        //error 
+        //dispatch(underControl())
+        //no use of addStuff()
+        //dispatch(addStuff());
     };
 
     return (
@@ -41,3 +47,4 @@ export default Popup;
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={'6'} ref={ref} variant="filled" {...props} />;
 });
+
