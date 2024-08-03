@@ -1,3 +1,4 @@
+
 import {
     Button,
     Card,
@@ -10,13 +11,16 @@ import {
 import RefreshIcon from '@mui/icons-material/Refresh';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
+//import Chart from 'react-apexcharts';
 import Chart from 'react-apexcharts';
 import { ChartDatabyYear } from '../../../utils/chartData';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 const SalesChart = ({  }) => {
-
+    //error 
+    //Define the chart type
+    const chartType = 'line';
     const navigate = useNavigate();
 
     return (
@@ -40,7 +44,9 @@ const SalesChart = ({  }) => {
                 <ResponsiveChart
                     options={ChartDatabyYear.options}
                     series={ChartDatabyYear.series}
-                    type={type}
+                    //error
+                    // Use the defined chart type
+                    type={chartType} 
                 />
             </CardContent>
 
