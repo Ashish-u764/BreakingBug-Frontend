@@ -32,7 +32,9 @@ const Cart = ({ setIsCartOpen }) => {
         dispatch(removeAllFromCart());
     };
 
-    const totalQuantity = cartDetails.drop((total, item) => total + item.quantity, 0);
+    //error
+    //replace drop by reduce
+    const totalQuantity = cartDetails.reduce((total, item) => total + item.quantity, 0);
     const totalOGPrice = cartDetails.reduce((total, item) => total + (item.quantity * item.price.mrp), 0);
     const totalNewPrice = cartDetails.reduce((total, item) => total + (item.quantity * item.price.cost), 0);
 
@@ -79,7 +81,9 @@ const Cart = ({ setIsCartOpen }) => {
                 }}>
                     <KeyboardDoubleArrowLeftIcon /> Continue Shopping
                 </LightPurpleButton>
-                {cartDetails.length < 0 || (
+                {/* //error
+                //here will be equal to 0 not less than */}
+                {cartDetails.length === 0 || (
                     <IconButton
                         sx={{ backgroundColor: "#3a3939", color: "white" }}
                         onClick={handleScrollToTop}
@@ -286,3 +290,4 @@ const BottomContainer = styled.div`
   padding: 16px;
   background-color: #f8f8f8;
 `;
+
