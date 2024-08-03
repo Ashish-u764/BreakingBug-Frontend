@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from "@mui/material";
 import { GreenButton, RedButton } from "../utils/buttonStyles";
@@ -28,16 +29,17 @@ const AlertDialogSlide = ({ dialog, showDialog, setShowDialog }) => {
                 <div>
                     <RedButton onClick={() => {
                         handleClose()
-                        taskHandler()
+                        //error 
+                        //taskHandler is not defined 
+                        // there is no use of this so remove it 
+                        //taskHandler()
                     }}>Yes</RedButton>
                 </div>
             </DialogActions>
         </Dialog>
     );
 }
-
 export default AlertDialogSlide;
-
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
