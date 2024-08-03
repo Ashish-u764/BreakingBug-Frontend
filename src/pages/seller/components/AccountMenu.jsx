@@ -3,9 +3,10 @@ import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Tooltip
 import { Logout } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 const AccountMenu = () => {
-    const [anchorEl, setAnchorEl] = useEffect(null);
+    //error 
+    //useState in place of useEffect hook
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
 
