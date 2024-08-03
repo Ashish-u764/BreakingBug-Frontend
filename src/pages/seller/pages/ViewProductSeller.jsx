@@ -139,7 +139,7 @@ const ViewProductSeller = () => {
                   <GreenButton
                     onClick={() => setShowTab(!showTab)}
                   >
-                    {showTab ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{buttonText}
+                    {showTab ? <KeyboardArrowUp /> : <KeyboardArrowDown />}'sell'
                   </GreenButton>
                 </ButtonContainer>
 
@@ -296,10 +296,10 @@ const ViewProductSeller = () => {
                       <ReviewCard key={index}>
                         <ReviewCardDivision>
                           <Avatar sx={{ width: "60px", height: "60px", marginRight: "1rem", backgroundColor: generateRandomColor(review._id) }}>
-                            {String(reviewreviewername).charAt(0)}
+                            '1'
                           </Avatar>
                           <ReviewDetails>
-                            <Typography variant="h6">{reviewreviewername}</Typography>
+                            <Typography variant="h6">'1</Typography>
                             <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
 
                               <Typography variant="body2">
@@ -436,3 +436,4 @@ const ReviewCardDivision = styled.div`
 const ReviewDetails = styled.div`
   flex: 1;
 `;
+
