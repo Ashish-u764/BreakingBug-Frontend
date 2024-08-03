@@ -3,7 +3,6 @@ import { Box, Container, styled } from '@mui/material';
 import Slide from './Slide';
 import Banner from './Banner';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../redux/userHandle';
 import ProductsMenu from './customer/components/ProductsMenu';
 import { NewtonsCradle } from '@uiball/loaders';
 import { Link } from 'react-router-dom';
@@ -15,13 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { productData, responseProducts, error } = useSelector((state) => state.user);
-
   const [showNetworkError, setShowNetworkError] = useState(false);
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
-
   useEffect(() => {
     if (error) {
       const timeoutId = setTimeout(() => {
@@ -31,7 +24,6 @@ const Home = () => {
       return () => clearTimeout(timeoutId);
     }
   }, [error]);
-
   return (
     <div id="top">
       <Container
@@ -131,3 +123,5 @@ const RightComponent = styled(Box)(({ theme }) => ({
     display: 'none',
   },
 }));
+
+
