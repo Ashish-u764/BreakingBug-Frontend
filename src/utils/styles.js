@@ -1,3 +1,4 @@
+
 import {
     TableCell,
     TableRow,
@@ -5,6 +6,7 @@ import {
     tableCellClasses,
     Drawer as MuiDrawer,
     AppBar as MuiAppBar,
+    Button,
 } from "@mui/material";
 import { Link } from "react-scroll";
 
@@ -77,3 +79,22 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
 export const NavLogo = styled(Link)`
     display: flex;
 `;
+
+//error 
+//LightPurpleButton is not found so we have to create it 
+export const LightPurpleButton = styled(Button)(({ theme }) => ({
+    backgroundColor: '#b19cd9',
+    color: '#fff',
+    '&:hover': {
+        backgroundColor: '#a29bfe',
+    },
+}));
+//error 
+//LightPurpleButton is not found so we have to create it 
+export const BasicButton = styled(Button)(({ theme }) => ({
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.common.white,
+    '&:hover': {
+        backgroundColor: theme.palette.primary.dark,
+    },
+}));
