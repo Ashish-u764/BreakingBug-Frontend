@@ -19,7 +19,9 @@ const Logout = () => {
   }, [currentRole, currentUser, dispatch])
 
   const handleLogout = () => {
-   
+    //error
+    //missing authLogout action on click
+    dispatch(authLogout());
     navigate('/');
   };
 
@@ -80,3 +82,4 @@ const LogoutButtonCancel = styled(LogoutButton)`
     background-color: rgb(10, 2, 69);
   }
 `;
+
