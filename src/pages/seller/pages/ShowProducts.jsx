@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +10,9 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import DeleteIcon from "@mui/icons-material/Delete";
 import UploadIcon from '@mui/icons-material/Upload';
 import AlertDialogSlide from '../../../components/AlertDialogSlide';
+//error 
+// Import Box and Grid components
+import { Box, Grid } from '@mui/material'; 
 
 const ShowProducts = () => {
   const dispatch = useDispatch();
