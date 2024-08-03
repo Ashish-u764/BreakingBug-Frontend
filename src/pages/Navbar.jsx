@@ -1,3 +1,5 @@
+
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -33,32 +35,30 @@ const Navbar = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
+
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElSign, setAnchorElSign] = React.useState(null);
     React.useEffect(() => {
         if (currentRole === "Customer") {
             console.log(currentUser);
             dispatch(updateCustomer(currentUser, currentUser._id));
         }
-    }, [currentRole, currentUser, dispatch, ancorElNav])
-
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const [anchorElSign, setAnchorElSign] = React.useState(null);
-
+        //error 
+        //typing error there should be anchorElNav
+        //and declare  after  initialization of 'anchorElNav'
+    }, [currentRole, currentUser, dispatch, anchorElNav])
     const open = Boolean(anchorElUser);
     const openSign = Boolean(anchorElSign);
 
     const [isCartOpen, setIsCartOpen] = React.useState(false);
 
-    // Cart
-    const handleOpen Cart = () => {
-        setIsCartOpen(true);
-    };
-
+    // error 1
+    //Syntax Error in handleOpenCart Function
     const handleOpenCart = () => {
-        setIsCartOpen(false);
+        setIsCartOpen(!isCartOpen);
     };
 
-    // Navigation Menu
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -337,7 +337,9 @@ const Navbar = () => {
                 <Drawer
                     anchor="right"
                     open={isCartOpen}
-                    onClose={handleCloseCart}
+                    //error 
+                    //undefined function was used
+                    onClose={handleOpenCart}
                     sx={{
                         width: '400px',
                         flexShrink: 0,
