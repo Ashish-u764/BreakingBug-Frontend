@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
-
     const navigate = useNavigate();
 
     return (
+        <>
         <Card>
             <Box sx={{ pt: '100%', position: 'relative' }}>
                 <Box
@@ -58,11 +58,19 @@ const ProductCard = ({ product }) => {
                 </Stack>
             </Stack>
         </Card >
+        </>
     );
 }
-
 ProductCard.propTypes = {
-    product: PropTypes.object,
+    product: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        productName: PropTypes.string.isRequired,
+        productImage: PropTypes.string.isRequired,
+        price: PropTypes.shape({
+            mrp: PropTypes.number,
+            cost: PropTypes.number.isRequired,
+        }).isRequired,
+    }).isRequired,
 };
 
 export default ProductCard
