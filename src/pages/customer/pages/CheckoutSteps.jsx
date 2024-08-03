@@ -17,12 +17,13 @@ const CheckoutSteps = () => {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const handleNext = () => {
-        setActiveStep(activeStep + 1);
+        setActiveStep((prevStep) => prevStep + 1);
     };
-
+    
     const handleBack = () => {
-        setActiveStep(activeStep - 1);
+        setActiveStep((prevStep) => prevStep - 1);
     };
+    
 
     return (
         <React.Fragment>
@@ -39,13 +40,14 @@ const CheckoutSteps = () => {
                         ))}
                     </Stepper>
                         <React.Fragment>
-                            {activeStep === 0 ||
+                        {/* will be && because || render the first matching condition  */}
+                            {activeStep === 0 &&
                                 <ShippingPage handleNext={handleNext} />
                             }
-                            {activeStep === 1 ||
+                            {activeStep === 1 &&
                                 <OrderSummary handleNext={handleNext} handleBack={handleBack} />
                             }
-                            {activeStep === 2 ||
+                            {activeStep === 2 &&
                                 <PaymentForm handleBack={handleBack} />
                             }
                         </React.Fragment>
