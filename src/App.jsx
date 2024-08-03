@@ -16,7 +16,6 @@ import Logout from './pages/Logout';
 import { isTokenValid } from './redux/userSlice';
 import CheckoutAftermath from './pages/customer/pages/CheckoutAftermath';
 import ViewOrder from './pages/customer/pages/ViewOrder';
-
 const App = () => {
 
   const dispatch = useDispatch()
