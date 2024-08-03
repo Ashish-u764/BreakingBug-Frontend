@@ -1,3 +1,4 @@
+
 import { createSlice } from '@reduxjs/toolkit';
 import jwtDecode from 'jwt-decode';
 
@@ -47,6 +48,12 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        //error - 4 
+        //updateCustomer was not defined
+        updateCustomer: (state, action) => {
+            state.currentUser = { ...state.currentUser, ...action.payload };
+            localStorage.setItem('user', JSON.stringify(state.currentUser));
+        },
         authRequest: (state) => {
             state.status = 'loading';
         },
@@ -168,18 +175,24 @@ const userSlice = createSlice({
             state.response = true;
             state.isLoggedIn = false;
         },
-
+        //error 
+        //corrected isTokenValid function for handle errors we have to use try catch
         isTokenValid: (state) => {
-            const decodedToken = jwtDecode(state.currentToken);
-            if (state.currentToken) {              state.isLoggedIn = true;
-            } else {
+            try {
+                if (state.currentToken) {
+                    const decodedToken = jwtDecode(state.currentToken);
+                    state.isLoggedIn = true;
+                } else {
+                    throw new Error('Token is invalid');
+                }
+            } catch (error) {
                 localStorage.removeItem('user');
                 state.currentUser = null;
                 state.currentRole = null;
                 state.currentToken = null;
                 state.status = 'idle';
                 state.response = null;
-                state.error = null;
+                state.error = error.message;
                 state.isLoggedIn = false;
             }
         },
@@ -303,6 +316,12 @@ export const {
     getError,
     getSearchFailed,
     customersListSuccess,
+    //error 
+    //need to export getCustomersListFailed
+    getCustomersListFailed,
+     //error 
+    //need to export setFilteredProducts
+    setFilteredProducts,
     getSpecificProductsFailed,
     specificProductSuccess,
     addToCart,
@@ -311,7 +330,10 @@ export const {
     removeAllFromCart,
     fetchProductDetailsFromCart,
     updateCurrentUser,
-    
+    //error - 5 
+    //also export this updateCustomer
+    updateCustomer,
 } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
+
