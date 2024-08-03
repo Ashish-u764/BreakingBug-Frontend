@@ -1,30 +1,26 @@
+
+
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
-import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
+import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import { LightPurpleButton } from '../../../utils/buttonStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, getSearchedProducts } from '../../../redux/userHandle';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const ProductsMenu = ({ dropName }) => {
-
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const location = useLocation();
-
-    const { productData } = useSelector(state => state.user);
+    const { productData = [] } = useSelector(state => state.user); 
 
     React.useEffect(() => {
         dispatch(getProducts());
-    }, [dispatch])
+    }, [dispatch]);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -46,14 +42,13 @@ const ProductsMenu = ({ dropName }) => {
         setAnchorEl(null);
         if (dropName === "Categories") {
             dispatch(getSearchedProducts("searchProductbyCategory", key));
-        }
-        else {
+        } else {
             dispatch(getSearchedProducts("searchProductbySubCategory", key));
         }
         if (location.pathname !== "/ProductSearch") {
             navigate("/ProductSearch");
         }
-    }
+    };
 
     return (
         <div style={{ marginLeft: "2rem" }}>
@@ -68,40 +63,24 @@ const ProductsMenu = ({ dropName }) => {
             >
                 {dropName}
             </LightPurpleButton>
-            {
-                dropName === "Categories" ?
-                    <StyledMenu
-                        id="demo-customized-menu"
-                        MenuListProps={{
-                            'aria-labelledby': 'demo-customized-button',
-                        }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
+            <StyledMenu
+                id="demo-customized-menu"
+                MenuListProps={{
+                    'aria-labelledby': 'demo-customized-button',
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+            >
+                {uniqueItems.map((data) => (
+                    <MenuItem
+                        key={dropName === "Categories" ? data.category : data.subcategory}
+                        onClick={() => catHandler(dropName === "Categories" ? data.category : data.subcategory)}
                     >
-                        {uniqueItems.map((data) => (
-                            <MenuItem onClick={() => { catHandler(data.category) }} key={data._id}>
-                                {data.category}
-                            </MenuItem>
-                        ))}
-                    </StyledMenu>
-                    :
-                    <StyledMenu
-                        id="demo-customized-menu"
-                        MenuListProps={{
-                            'aria-labelledby': 'demo-customized-button',
-                        }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        {uniqueItems.map((data) => (
-                            <MenuItem onClick={() => { catHandler(data.subcategory) }} key={data._id}>
-                                {data.subcategory}
-                            </MenuItem>
-                        ))}
-                    </StyledMenu>
-            }
+                        {dropName === "Categories" ? data.category : data.subcategory}
+                    </MenuItem>
+                ))}
+            </StyledMenu>
         </div>
     );
 }
