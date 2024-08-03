@@ -1,5 +1,14 @@
 # Breaking Bug - Frontend Repository
 
+
+# Final Submission
+- Hosted Web Link: [Your Repository Link](https://github.com/yourusername/your-repo)
+- Repository Link: [Your Repository Link](https://github.com/yourusername/your-repo)
+- Google Sheet of Errors: [Google Sheet Link](https://docs.google.com/spreadsheets/d/1yHIReqdlA8HI1Eak69wNsd8IRBEei9VsvSe-_X2vAcI/edit?usp=sharing)
+  
+
+
+
 <img src="https://images.prismic.io/ieeemuj/Zqu58B5LeNNTxuyE_BreakingBugBanner.png?auto=format,compress" alt="Breaking Bug Poster">
 
 ## Table of Content
