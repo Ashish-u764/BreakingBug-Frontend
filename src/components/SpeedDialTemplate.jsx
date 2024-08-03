@@ -1,7 +1,20 @@
+
+
 import React from 'react'
-import { SpeedDial, styled } from '@mui/material';
+//error
+//SpeedDialAction not imported 
+import { SpeedDial, styled , SpeedDialAction } from '@mui/material';
 import TuneIcon from '@mui/icons-material/Tune';
 
+const CustomSpeedDial = styled(SpeedDial)`
+  .MuiSpeedDial-fab {
+    background-color: #032803;
+    
+    &:hover {
+      background-color: green;
+    }
+  }
+`;
 const SpeedDialTemplate = ({ actions }) => {
     return (
         <CustomSpeedDial
@@ -22,14 +35,4 @@ const SpeedDialTemplate = ({ actions }) => {
     )
 }
 
-export default SpeedDialTemplate
-
-const CustomSpeedDial = styled(SpeedDial)`
-  .MuiSpeedDial-fab {
-    background-color: #032803;
-    
-    &:hover {
-      background-color: green;
-    }
-  }
-`;
+export default SpeedDialTemplate ;
