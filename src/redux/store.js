@@ -1,8 +1,10 @@
+
 import { configureStore } from '@reduxjs/toolkit';
 import { userReducer } from './userSlice';
-
+//error
+//syntax error 
 const store = configureStore({
-    reducer={
+    reducer: {
         user: userReducer,
     }
 });
