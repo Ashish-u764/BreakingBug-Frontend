@@ -8,7 +8,6 @@ import { LightPurpleButton } from '../utils/buttonStyles';
 import { authUser } from '../redux/userHandle';
 import styled from 'styled-components';
 import Popup from '../components/Popup';
-
 const AuthenticationPage = ({ mode, role }) => {
 
     const bgpic = "https://images.pexels.com/photos/1121097/pexels-photo-1121097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -29,8 +28,13 @@ const AuthenticationPage = ({ mode, role }) => {
     const [shopNameError, setShopNameError] = useState(false);
 
     const handleSubmit = (event) => {
-
-        let email, password;
+        //error
+        //this line to prevent default form submission
+        event.preventDefault();
+        //error 
+        //email and password variables are declared but not assigned values
+        const email = event.target.email.value;
+        const password = event.target.password.value;
 
         if (!password) {
             if (!email) setEmailError(true);
@@ -278,3 +282,4 @@ const StyledTypography = styled.h4`
     color: #2c2143;
     margin-bottom: 16px;
 `;
+
